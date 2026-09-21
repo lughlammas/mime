@@ -1,0 +1,261 @@
+:root {
+  color-scheme: dark;
+  --bg: #050505;
+  --bg-panel: #0c0c0c;
+  --ink: #e8e4dc;
+  --muted: #7a756c;
+  --trace: #cfc8b8;
+  --accent: #d4c4a0;
+  --fail: #8b1e1e;
+  --fail-glow: rgba(180, 40, 40, 0.55);
+  --border: #2a2722;
+  --font: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --mono: ui-monospace, "Cascadia Code", Menlo, monospace;
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--ink);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  background: radial-gradient(ellipse at top, #12100e 0%, #050505 55%);
+}
+
+body {
+  min-height: 100vh;
+}
+
+#app {
+  min-height: 100vh;
+}
+
+.shell {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 1.25rem 1rem 3rem;
+}
+
+.top {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.75rem;
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.brand {
+  letter-spacing: 0.35em;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--trace);
+}
+
+.tagline {
+  font-size: 0.8rem;
+  color: var(--muted);
+  font-style: italic;
+}
+
+.screen .title {
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.95rem;
+  color: var(--accent);
+}
+
+.muted {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.grid {
+  display: grid;
+  gap: 0.85rem;
+  margin-top: 1rem;
+}
+
+.card {
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  padding: 1rem 1.1rem;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+}
+
+.card h2 {
+  margin: 0 0 0.35rem;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.meta {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  margin: 0 0 0.9rem;
+}
+
+.pill {
+  display: inline-block;
+  border: 1px solid var(--border);
+  padding: 0.1rem 0.45rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.btn {
+  font-family: var(--font);
+  cursor: pointer;
+  border: 1px solid var(--trace);
+  background: transparent;
+  color: var(--ink);
+  padding: 0.45rem 0.9rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.btn:hover {
+  background: rgba(212, 196, 160, 0.08);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: wait;
+}
+
+.btn.primary {
+  background: #14110e;
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.btn.ghost {
+  border-color: var(--border);
+  color: var(--muted);
+}
+
+.play-head {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.play-title {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.status-row {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+}
+
+.phase {
+  border: 1px solid var(--border);
+  padding: 0.15rem 0.5rem;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+}
+
+.phase[data-phase='MIME'] {
+  border-color: var(--accent);
+}
+
+.phase[data-phase='FAIL'] {
+  border-color: var(--fail);
+  color: #e8a0a0;
+  background: rgba(139, 30, 30, 0.25);
+}
+
+.phase[data-phase='COMPLETE'] {
+  border-color: #4a5a3a;
+  color: #b8c9a0;
+}
+
+.board-wrap {
+  width: min(100%, 480px);
+  margin: 0 auto;
+  aspect-ratio: 1;
+  border: 1px solid var(--border);
+  box-shadow:
+    0 0 0 1px #000,
+    0 12px 40px rgba(0, 0, 0, 0.65);
+  transition: box-shadow 120ms ease, outline-color 120ms ease;
+  outline: 2px solid transparent;
+}
+
+.board-wrap.flash-fail {
+  outline-color: var(--fail);
+  box-shadow:
+    0 0 0 1px #000,
+    0 0 28px var(--fail-glow),
+    inset 0 0 40px rgba(139, 30, 30, 0.35);
+}
+
+.cg-wrap {
+  width: 100%;
+  height: 100%;
+}
+
+/* Victorian dark board override on top of brown theme */
+.cg-wrap cg-board {
+  background-color: #1a1814;
+}
+
+.cg-wrap cg-board square.dark {
+  background-color: #161410;
+}
+
+.cg-wrap cg-board square.light {
+  background-color: #2c2820;
+}
+
+.cg-wrap cg-board square.last-move {
+  background-color: rgba(212, 196, 160, 0.22) !important;
+}
+
+.complete {
+  margin-top: 1rem;
+  text-align: center;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  background: var(--bg-panel);
+}
+
+.complete.hidden {
+  display: none;
+}
+
+.complete-msg {
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 0.85rem;
+}
+
+.row {
+  display: flex;
+  gap: 0.6rem;
+  justify-content: center;
+}
+
+.fail-text {
+  color: #e8a0a0;
+}

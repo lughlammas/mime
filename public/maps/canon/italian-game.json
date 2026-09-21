@@ -1,0 +1,25 @@
+{
+  "id": "italian-game",
+  "name": "Italian Game",
+  "epithet": "Giuoco Piano start",
+  "side_to_learn": "white",
+  "start_fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+  "moves_uci": [
+    "e2e4",
+    "e7e5",
+    "g1f3",
+    "b8c6",
+    "f1c4",
+    "f8c5",
+    "c2c3",
+    "g8f6"
+  ],
+  "length": 8,
+  "tags": [
+    "open",
+    "italian"
+  ],
+  "difficulty": 1,
+  "thesis": "Develop with tempo toward f7; c3 prepares d4.",
+  "validated_at": "2026-09-21T19:29:17.213Z"
+}
