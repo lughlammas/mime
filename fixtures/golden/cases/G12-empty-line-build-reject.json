@@ -1,0 +1,9 @@
+{
+  "id": "G12-empty-line-build-reject",
+  "line_ref": null,
+  "clock": "virtual",
+  "meta": "build:maps",
+  "steps": [
+    { "op": "assert_build_maps_rejects_empty" }
+  ]
+}

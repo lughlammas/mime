@@ -1,0 +1,11 @@
+{
+  "id": "G11-try-move-outside-mime",
+  "line_ref": "italian-game",
+  "clock": "virtual",
+  "steps": [
+    { "op": "start" },
+    { "op": "expect", "snap": { "phase": "SHOW", "cursorPly": 0, "mistakes": 0 } },
+    { "op": "try_move", "from": "e2", "to": "e4", "accepted": false },
+    { "op": "expect", "snap": { "phase": "SHOW", "cursorPly": 0, "mistakes": 0 } }
+  ]
+}

@@ -1,12 +1,16 @@
 import { Chess } from 'chess.js';
 import type { Line, MimeSnapshot, Phase, Side } from './types.ts';
 import { parseUci, toUci } from './uci.ts';
+import { realClock, type Clock } from './clock.ts';
 
 export type LoopListener = (snap: MimeSnapshot) => void;
 
-const SHOW_PAUSE_MS = 700;
-const DEMO_HOLD_MS = 900;
-const FAIL_FLASH_MS = 550;
+export const SHOW_PAUSE_MS = 700;
+export const DEMO_HOLD_MS = 900;
+export const FAIL_FLASH_MS = 550;
+
+export type { Clock } from './clock.ts';
+export { VirtualClock, realClock } from './clock.ts';
 
 /**
  * MIME session state machine.
@@ -21,11 +25,13 @@ export class MimeLoop {
   private lastMove: [string, string] | null = null;
   private flash = false;
   private listeners = new Set<LoopListener>();
-  private timer: ReturnType<typeof setTimeout> | null = null;
+  private timer: unknown = null;
   private stopped = false;
+  private readonly clock: Clock;
 
-  constructor(line: Line) {
+  constructor(line: Line, clock: Clock = realClock) {
     this.line = line;
+    this.clock = clock;
     this.chess = new Chess(line.start_fen);
   }
 
@@ -42,6 +48,7 @@ export class MimeLoop {
   }
 
   start(): void {
+    this.stopped = false;
     this.resetBoard(0);
     this.phase = 'SHOW';
     this.emit();
@@ -53,6 +60,14 @@ export class MimeLoop {
     this.clearTimer();
   }
 
+  /** Resolve promo: explicit char, else auto-queen on back-rank pawn (Android parity). */
+  private resolvePromotion(from: string, to: string, promotion?: string): 'q' | 'r' | 'b' | 'n' | undefined {
+    if (promotion) return promotion as 'q' | 'r' | 'b' | 'n';
+    const piece = this.chess.get(from as Parameters<Chess['get']>[0]);
+    if (piece?.type === 'p' && (to[1] === '8' || to[1] === '1')) return 'q';
+    return undefined;
+  }
+
   /** User attempt during MIME. Returns true if accepted. */
   tryMove(from: string, to: string, promotion?: string): boolean {
     if (this.phase !== 'MIME' || this.stopped) return false;
@@ -60,13 +75,14 @@ export class MimeLoop {
     const expected = this.line.moves_uci[this.cursorPly];
     if (!expected) return false;
 
+    const promo = this.resolvePromotion(from, to, promotion);
     const probe = new Chess(this.chess.fen());
     let played;
     try {
       played = probe.move({
         from,
         to,
-        promotion: promotion as 'q' | 'r' | 'b' | 'n' | undefined,
+        promotion: promo,
       });
     } catch {
       played = null;
@@ -82,7 +98,7 @@ export class MimeLoop {
     this.chess.move({
       from,
       to,
-      promotion: promotion as 'q' | 'r' | 'b' | 'n' | undefined,
+      promotion: promo,
     });
     this.lastMove = [from, to];
     this.cursorPly += 1;
@@ -207,12 +223,12 @@ export class MimeLoop {
 
   private schedule(ms: number, fn: () => void): void {
     this.clearTimer();
-    this.timer = setTimeout(fn, ms);
+    this.timer = this.clock.setTimeout(fn, ms);
   }
 
   private clearTimer(): void {
     if (this.timer !== null) {
-      clearTimeout(this.timer);
+      this.clock.clearTimeout(this.timer);
       this.timer = null;
     }
   }

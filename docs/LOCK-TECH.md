@@ -6,3 +6,7 @@ board flips with side_to_learn · black learner → white auto-plays Line move 0
 no backend/Godot/Android/engine in v0.
 
 Build authorized 2026-09-21.
+
+## v0.2 (2026-09-24)
+
+Android nativo **já existe** (`lughlammas/mime-android`). v0.2 = cercar MimeLoop (goldens, CI, canon maps, LICENSE) — não feature nova; targetSdk 36 fora de escopo.

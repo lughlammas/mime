@@ -1,0 +1,12 @@
+{
+  "id": "G03-legal-wrong-fail-reset",
+  "line_ref": "italian-game",
+  "clock": "virtual",
+  "steps": [
+    { "op": "start" },
+    { "op": "advance_ms", "ms": 900 },
+    { "op": "expect", "snap": { "phase": "MIME", "cursorPly": 0 } },
+    { "op": "expect_fail_then_reset", "from": "d2", "to": "d4" },
+    { "op": "expect", "snap": { "phase": "SHOW", "cursorPly": 0, "mistakes": 1, "flash": false, "expectedUci": "e2e4" } }
+  ]
+}

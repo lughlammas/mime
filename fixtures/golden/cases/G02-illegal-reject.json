@@ -1,0 +1,14 @@
+{
+  "id": "G02-illegal-reject",
+  "line_ref": "italian-game",
+  "clock": "virtual",
+  "steps": [
+    { "op": "start" },
+    { "op": "advance_ms", "ms": 900 },
+    { "op": "expect", "snap": { "phase": "MIME", "cursorPly": 0, "mistakes": 0, "flash": false } },
+    { "op": "expect_rejected", "from": "e2", "to": "e5" },
+    { "op": "expect", "snap": { "phase": "MIME", "cursorPly": 0, "mistakes": 0, "flash": false, "expectedUci": "e2e4" } },
+    { "op": "expect_rejected", "from": "a1", "to": "a3" },
+    { "op": "expect", "snap": { "phase": "MIME", "cursorPly": 0, "mistakes": 0, "flash": false } }
+  ]
+}

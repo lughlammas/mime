@@ -1,0 +1,12 @@
+{
+  "id": "G05-stop-cancels-timer",
+  "line_ref": "italian-game",
+  "clock": "virtual",
+  "steps": [
+    { "op": "start" },
+    { "op": "expect", "snap": { "phase": "SHOW", "cursorPly": 0 } },
+    { "op": "stop" },
+    { "op": "advance_ms", "ms": 2000 },
+    { "op": "expect", "snap": { "phase": "SHOW", "cursorPly": 0, "mistakes": 0 } }
+  ]
+}

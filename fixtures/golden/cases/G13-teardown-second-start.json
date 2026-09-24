@@ -1,0 +1,15 @@
+{
+  "id": "G13-teardown-second-start",
+  "line_ref": "italian-game",
+  "clock": "virtual",
+  "steps": [
+    { "op": "start" },
+    { "op": "advance_ms", "ms": 900 },
+    { "op": "try_move", "from": "e2", "to": "e4", "accepted": true },
+    { "op": "stop" },
+    { "op": "start" },
+    { "op": "expect", "snap": { "phase": "SHOW", "cursorPly": 0, "mistakes": 0, "flash": false, "expectedUci": "e2e4" } },
+    { "op": "advance_ms", "ms": 900 },
+    { "op": "expect", "snap": { "phase": "MIME", "cursorPly": 0, "mistakes": 0 } }
+  ]
+}

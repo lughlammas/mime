@@ -1,0 +1,12 @@
+{
+  "id": "G09-promo-explicit",
+  "line_ref": "promo-white-queen",
+  "clock": "virtual",
+  "steps": [
+    { "op": "start" },
+    { "op": "advance_ms", "ms": 900 },
+    { "op": "expect", "snap": { "phase": "MIME", "cursorPly": 0, "expectedUci": "e7e8q" } },
+    { "op": "try_move", "from": "e7", "to": "e8", "promotion": "q", "accepted": true },
+    { "op": "expect", "snap": { "phase": "COMPLETE", "cursorPly": 1, "mistakes": 0, "expectedUci": null } }
+  ]
+}

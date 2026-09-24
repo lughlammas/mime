@@ -1,0 +1,18 @@
+{
+  "id": "G04-fail-mid-line",
+  "line_ref": "italian-game",
+  "clock": "virtual",
+  "steps": [
+    { "op": "start" },
+    { "op": "advance_ms", "ms": 900 },
+    { "op": "try_move", "from": "e2", "to": "e4", "accepted": true },
+    { "op": "advance_ms", "ms": 700 },
+    { "op": "advance_ms", "ms": 900 },
+    { "op": "try_move", "from": "g1", "to": "f3", "accepted": true },
+    { "op": "advance_ms", "ms": 700 },
+    { "op": "advance_ms", "ms": 900 },
+    { "op": "expect", "snap": { "phase": "MIME", "cursorPly": 4, "expectedUci": "f1c4", "mistakes": 0 } },
+    { "op": "expect_fail_then_reset", "from": "b1", "to": "c3" },
+    { "op": "expect", "snap": { "phase": "SHOW", "cursorPly": 0, "mistakes": 1, "flash": false } }
+  ]
+}

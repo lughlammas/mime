@@ -1,0 +1,16 @@
+{
+  "id": "G08-fail-black-mid-line",
+  "line_ref": "accelerated-dragon",
+  "clock": "virtual",
+  "steps": [
+    { "op": "start" },
+    { "op": "advance_ms", "ms": 700 },
+    { "op": "advance_ms", "ms": 900 },
+    { "op": "try_move", "from": "c7", "to": "c5", "accepted": true },
+    { "op": "advance_ms", "ms": 700 },
+    { "op": "advance_ms", "ms": 900 },
+    { "op": "expect", "snap": { "phase": "MIME", "cursorPly": 3, "expectedUci": "b8c6" } },
+    { "op": "expect_fail_then_reset", "from": "d7", "to": "d6" },
+    { "op": "expect", "snap": { "phase": "SHOW", "cursorPly": 1, "mistakes": 1, "flash": false, "lastMove": ["e2", "e4"] } }
+  ]
+}

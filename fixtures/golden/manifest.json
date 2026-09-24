@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "cases": [
+    "G01-white-learner-happy",
+    "G02-illegal-reject",
+    "G03-legal-wrong-fail-reset",
+    "G04-fail-mid-line",
+    "G05-stop-cancels-timer",
+    "G06-black-white-auto-ply0",
+    "G07-black-learner-happy",
+    "G08-fail-black-mid-line",
+    "G09-promo-explicit",
+    "G10-promo-auto-queen",
+    "G11-try-move-outside-mime",
+    "G12-empty-line-build-reject",
+    "G13-teardown-second-start"
+  ]
+}

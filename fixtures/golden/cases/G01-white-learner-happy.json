@@ -1,0 +1,26 @@
+{
+  "id": "G01-white-learner-happy",
+  "line_ref": "italian-game",
+  "clock": "virtual",
+  "steps": [
+    { "op": "start" },
+    { "op": "expect", "snap": { "phase": "SHOW", "cursorPly": 0, "mistakes": 0, "flash": false, "expectedUci": "e2e4" } },
+    { "op": "advance_ms", "ms": 900 },
+    { "op": "expect", "snap": { "phase": "MIME", "cursorPly": 0, "mistakes": 0, "flash": false, "expectedUci": "e2e4" } },
+    { "op": "try_move", "from": "e2", "to": "e4", "accepted": true },
+    { "op": "expect", "snap": { "phase": "SHOW", "cursorPly": 2, "mistakes": 0 } },
+    { "op": "advance_ms", "ms": 700 },
+    { "op": "expect", "snap": { "phase": "SHOW", "cursorPly": 2, "expectedUci": "g1f3" } },
+    { "op": "advance_ms", "ms": 900 },
+    { "op": "expect", "snap": { "phase": "MIME", "cursorPly": 2, "expectedUci": "g1f3" } },
+    { "op": "try_move", "from": "g1", "to": "f3", "accepted": true },
+    { "op": "advance_ms", "ms": 700 },
+    { "op": "advance_ms", "ms": 900 },
+    { "op": "try_move", "from": "f1", "to": "c4", "accepted": true },
+    { "op": "advance_ms", "ms": 700 },
+    { "op": "advance_ms", "ms": 900 },
+    { "op": "try_move", "from": "c2", "to": "c3", "accepted": true },
+    { "op": "advance_ms", "ms": 700 },
+    { "op": "expect", "snap": { "phase": "COMPLETE", "cursorPly": 8, "mistakes": 0, "flash": false, "expectedUci": null } }
+  ]
+}

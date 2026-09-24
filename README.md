@@ -36,3 +36,14 @@ Static JSON under `public/maps/`:
 4. **COMPLETE** — line finished; retry or back to library.
 
 Black learner: White’s first UCI auto-plays on Show from the standard start FEN. Orientation follows `side_to_learn`.
+
+## Test / CI (v0.2)
+
+```bash
+npm ci
+npm run build:maps
+npm test
+npm run build
+```
+
+Golden fixtures: `fixtures/golden/`. Canon source: `maps/canon-src/`. Export Android: `MIME_ANDROID_ROOT=../mime-android npm run export:android`.

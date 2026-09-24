@@ -1,0 +1,21 @@
+{
+  "id": "G07-black-learner-happy",
+  "line_ref": "accelerated-dragon",
+  "clock": "virtual",
+  "steps": [
+    { "op": "start" },
+    { "op": "advance_ms", "ms": 700 },
+    { "op": "advance_ms", "ms": 900 },
+    { "op": "try_move", "from": "c7", "to": "c5", "accepted": true },
+    { "op": "advance_ms", "ms": 700 },
+    { "op": "advance_ms", "ms": 900 },
+    { "op": "try_move", "from": "b8", "to": "c6", "accepted": true },
+    { "op": "advance_ms", "ms": 700 },
+    { "op": "advance_ms", "ms": 900 },
+    { "op": "try_move", "from": "c5", "to": "d4", "accepted": true },
+    { "op": "advance_ms", "ms": 700 },
+    { "op": "advance_ms", "ms": 900 },
+    { "op": "try_move", "from": "g7", "to": "g6", "accepted": true },
+    { "op": "expect", "snap": { "phase": "COMPLETE", "cursorPly": 8, "mistakes": 0, "flash": false, "expectedUci": null } }
+  ]
+}

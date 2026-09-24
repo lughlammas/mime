@@ -121,3 +121,16 @@ maps/
 ## Mantra
 
 MIME does not play you. MIME makes you copy the line until the line is yours.
+
+---
+
+## v0.2 Hardening
+
+See **[HARDENING-SPEC.md](../HARDENING-SPEC.md)** (repo root) / **HARDENING-SPEC.md** — locked 2026-09-24.
+
+v0.2 does **not** add product features. It adds:
+- Golden fixtures G01–G13 + virtual clock (web Vitest + Android JUnit)
+- Canon maps in `maps/canon-src/` → `build:maps` → `public/maps` + Android export
+- CI gates, MIT LICENSE, SemVer 0.2.0
+
+Android native runtime **exists** (see LOCK-TECH); v0.2 = fence the loop, not redesign.

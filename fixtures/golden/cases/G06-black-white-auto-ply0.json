@@ -1,0 +1,13 @@
+{
+  "id": "G06-black-white-auto-ply0",
+  "line_ref": "accelerated-dragon",
+  "clock": "virtual",
+  "steps": [
+    { "op": "start" },
+    { "op": "expect", "snap": { "phase": "SHOW", "cursorPly": 1, "lastMove": ["e2", "e4"] } },
+    { "op": "advance_ms", "ms": 700 },
+    { "op": "expect", "snap": { "phase": "SHOW", "cursorPly": 1, "expectedUci": "c7c5" } },
+    { "op": "advance_ms", "ms": 900 },
+    { "op": "expect", "snap": { "phase": "MIME", "cursorPly": 1, "expectedUci": "c7c5", "mistakes": 0 } }
+  ]
+}
