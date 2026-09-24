@@ -38,11 +38,14 @@ export function mountBoard(
   el: HTMLElement,
   onUserMove: UserMoveHandler,
 ): BoardHandle {
+  // Chessground binds mousedown/touchstart only at mount. If we start with
+  // viewOnly: true, those listeners are never attached — and ground.set()
+  // cannot rebind them. Keep viewOnly false; gate input via movable/dests.
   const ground: Api = Chessground(el, {
     fen: 'start',
     orientation: 'white',
     coordinates: true,
-    viewOnly: true,
+    viewOnly: false,
     draggable: { enabled: false },
     selectable: { enabled: false },
     movable: {
@@ -80,7 +83,8 @@ export function mountBoard(
         orientation,
         lastMove: lastMove ? ([lastMove[0], lastMove[1]] as Key[]) : undefined,
         turnColor: fen.includes(' w ') ? 'white' : 'black',
-        viewOnly: !interactive,
+        // Never toggle viewOnly after mount (listeners are one-shot at init).
+        viewOnly: false,
         draggable: { enabled: !!interactive },
         selectable: { enabled: !!interactive },
         movable: {
